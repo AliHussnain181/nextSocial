@@ -1,8 +1,9 @@
+import ClientProvider from '@/store/Provider'
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import Header from '@/components/Header'
+import { Toaster } from 'react-hot-toast'
 
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -14,9 +15,16 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body >
+        <ClientProvider>
+          <Header/>
+          {children}
+          <Toaster/>
+        </ClientProvider>
+      </body>
     </html>
   )
 }
